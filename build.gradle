@@ -16,5 +16,6 @@ sourceSets {
     }
 }
 dependencies {
+    compile group: 'org.apache.kafka', name: 'kafka-clients', version: '2.5.0'
     compile 'junit:junit:4.12'
 }
