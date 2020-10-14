@@ -7,7 +7,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 
 public class SampleProducer {
 
-  private void produce(String message) {
+  KafkaProducer getProducer() {
     //Create Producer properties
     Properties props = new Properties();
     props.put("bootstrap.servers", "localhost:9092");
@@ -16,7 +16,11 @@ public class SampleProducer {
     props.put("acks", "1");
 
     //Create Kafka Producer
-    KafkaProducer<String, String> producer = new KafkaProducer<>(props);
+    return new KafkaProducer<String, String>(props);
+  }
+
+  private void produce(String message) {
+    KafkaProducer<String, String> producer = getProducer();
     //Send data using Kafka Producer
     producer.send(new ProducerRecord<>("kafka-workshop-eg", message));
     //producer.flush();//TODO Read why need to flush before close
