@@ -12,9 +12,8 @@ public class SampleProducerCallback extends SampleProducer{
     KafkaProducer<String, String> producer = getProducer();
 
     //Send data using Kafka Producer
-    producer.send(new ProducerRecord<>("kafka-workshop-eg", message), new Callback() {
-      @Override
-      public void onCompletion(RecordMetadata metadata, Exception exception) {
+    producer.send(new ProducerRecord<>("kafka-workshop-eg", message), (metadata, exception) -> {
+      if(exception == null) {
         System.out.println(
             "Successfully produced the message to partition: " + metadata.partition() + " and offset: " + metadata
                 .offset());
