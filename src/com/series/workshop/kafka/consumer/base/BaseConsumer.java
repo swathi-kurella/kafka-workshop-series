@@ -87,7 +87,7 @@ public class BaseConsumer {
     return props;
   }
 
-  protected void printRecords(ConsumerRecords<String, String> records) {
+  private void printRecords(ConsumerRecords<String, String> records) {
     for (ConsumerRecord<String, String> record : records) {
       System.out.printf("topic = %s, partition = %s, offset = %d, key = %s, value = %s%n", record.topic(),
           record.partition(), record.offset(), record.key(), record.value());
