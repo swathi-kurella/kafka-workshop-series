@@ -1,9 +1,8 @@
-package com.tw.consumer.partitions;
+package com.series.workshop.kafka.consumer.partitions;
 
-import static com.tw.consumer.base.Constants.SAMPLE_TOPIC;
-
-import com.tw.consumer.base.BaseConsumer;
-import com.tw.consumer.base.CommitType;
+import com.series.workshop.kafka.consumer.base.Constants;
+import com.series.workshop.kafka.consumer.base.BaseConsumer;
+import com.series.workshop.kafka.consumer.base.CommitType;
 import java.util.Collections;
 import java.util.Properties;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -20,7 +19,7 @@ public class CustomConsumerUtilForPartition extends BaseConsumer {
     KafkaConsumer<String, String> consumer = getKafkaConsumer(props);
 
     //Manually assign partitions
-    consumer.assign(Collections.singletonList(new TopicPartition(SAMPLE_TOPIC, 2)));
+    consumer.assign(Collections.singletonList(new TopicPartition(Constants.SAMPLE_TOPIC, 2)));
 
     pollProcessCommit(consumer, CommitType.DEFAULT);
   }

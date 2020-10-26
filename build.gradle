@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'com.tw'
+group 'com.series.workshop.kafka'
 version '1.0-SNAPSHOT'
 
 repositories {

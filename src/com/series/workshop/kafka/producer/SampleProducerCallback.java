@@ -1,10 +1,10 @@
-package com.tw.producer;
+package com.series.workshop.kafka.producer;
+
+import static com.series.workshop.kafka.consumer.base.Constants.SAMPLE_TOPIC;
 
 import java.util.Scanner;
-import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
 
 public class SampleProducerCallback extends SampleProducer{
 
@@ -12,7 +12,7 @@ public class SampleProducerCallback extends SampleProducer{
     KafkaProducer<String, String> producer = getProducer();
 
     //Send data using Kafka Producer
-    producer.send(new ProducerRecord<>("kafka-workshop-eg", message), (metadata, exception) -> {
+    producer.send(new ProducerRecord<>(SAMPLE_TOPIC, message), (metadata, exception) -> {
       if(exception == null) {
         System.out.println(
             "Successfully produced the message to partition: " + metadata.partition() + " and offset: " + metadata
@@ -27,10 +27,9 @@ public class SampleProducerCallback extends SampleProducer{
   public static void main(String[] args) {
     SampleProducerCallback producer = new SampleProducerCallback();
     Scanner scan = new Scanner(System.in);
-    String message = scan.next();
-    while(!"exit".equalsIgnoreCase(message)) {
+    while(true) {
+      String message = scan.next();
       producer.produce(message);
-      message = scan.next();
     }
   }
 

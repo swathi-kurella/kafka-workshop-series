@@ -1,4 +1,4 @@
-package com.tw.consumer.base;
+package com.series.workshop.kafka.consumer.base;
 
 public final class Constants {
 

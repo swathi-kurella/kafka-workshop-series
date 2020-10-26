@@ -1,9 +1,9 @@
-package com.tw.consumer.offsetcommits;
+package com.series.workshop.kafka.consumer.offsetcommits;
 
-import static com.tw.consumer.base.Constants.SAMPLE_TOPIC;
+import static com.series.workshop.kafka.consumer.base.Constants.SAMPLE_TOPIC;
 
-import com.tw.consumer.base.BaseConsumer;
-import com.tw.consumer.base.CommitType;
+import com.series.workshop.kafka.consumer.base.BaseConsumer;
+import com.series.workshop.kafka.consumer.base.CommitType;
 import java.util.Collections;
 import java.util.Properties;
 import org.apache.kafka.clients.consumer.KafkaConsumer;

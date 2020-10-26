@@ -1,4 +1,4 @@
-package com.tw.consumer;
+package com.series.workshop.kafka.consumer;
 
 import java.time.Duration;
 import java.util.Collections;

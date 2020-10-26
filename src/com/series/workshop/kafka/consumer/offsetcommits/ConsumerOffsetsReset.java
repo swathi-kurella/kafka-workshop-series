@@ -1,9 +1,8 @@
-package com.tw.consumer.offsetcommits;
+package com.series.workshop.kafka.consumer.offsetcommits;
 
-import static com.tw.consumer.base.Constants.SAMPLE_TOPIC;
-
-import com.tw.consumer.base.BaseConsumer;
-import com.tw.consumer.base.CommitType;
+import com.series.workshop.kafka.consumer.base.Constants;
+import com.series.workshop.kafka.consumer.base.BaseConsumer;
+import com.series.workshop.kafka.consumer.base.CommitType;
 import java.util.Collections;
 import java.util.Properties;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -19,7 +18,7 @@ public class ConsumerOffsetsReset extends BaseConsumer {
     //Create Kafka BaseConsumer
     KafkaConsumer<String, String> consumer = getKafkaConsumer(props);
 
-    consumer.subscribe(Collections.singletonList(SAMPLE_TOPIC));
+    consumer.subscribe(Collections.singletonList(Constants.SAMPLE_TOPIC));
 
     pollProcessCommit(consumer, CommitType.DEFAULT);
   }

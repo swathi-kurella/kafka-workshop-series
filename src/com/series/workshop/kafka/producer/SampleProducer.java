@@ -1,4 +1,6 @@
-package com.tw.producer;
+package com.series.workshop.kafka.producer;
+
+import static com.series.workshop.kafka.consumer.base.Constants.SAMPLE_TOPIC;
 
 import java.util.Properties;
 import java.util.Scanner;
@@ -22,7 +24,7 @@ public class SampleProducer {
   private void produce(String message) {
     KafkaProducer<String, String> producer = getProducer();
     //Send data using Kafka Producer
-    producer.send(new ProducerRecord<>("kafka-workshop-eg", message));
+    producer.send(new ProducerRecord<>(SAMPLE_TOPIC, message));
     //producer.flush();//TODO Read why need to flush before close
     producer.close();
   }
@@ -30,10 +32,9 @@ public class SampleProducer {
   public static void main(String[] args) {
     SampleProducer producer = new SampleProducer();
     Scanner scan = new Scanner(System.in);
-    String message = scan.next();
-    while(!"exit".equalsIgnoreCase(message)) {
+    while(true) {
+      String message = scan.next();
       producer.produce(message);
-      message = scan.next();
     }
   }
 

@@ -1,4 +1,4 @@
-package com.tw.consumer.base;
+package com.series.workshop.kafka.consumer.base;
 
 import java.time.Duration;
 import java.util.Map.Entry;
