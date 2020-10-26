@@ -1,4 +1,4 @@
-package com.tw.consumer.group;
+package com.tw.consumer.offsetcommits;
 
 import static com.tw.consumer.base.Constants.SAMPLE_TOPIC;
 
@@ -8,12 +8,13 @@ import java.util.Collections;
 import java.util.Properties;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
-public class SampleConsumer2 extends BaseConsumer {
+public class ConsumerOffsetsReset extends BaseConsumer {
 
-  private void startConsumer() throws InterruptedException {
+  private void consumeFromCommitReset() throws InterruptedException {
     //Create BaseConsumer Properties
     Properties props = getBasicConsumerProperties();
-    props.put("group.id", "test");
+    props.put("group.id", "newGroup");
+    props.put("auto.offset.reset", "earliest");//TODO [earliest, latest, none] with a NEW group id and observe
 
     //Create Kafka BaseConsumer
     KafkaConsumer<String, String> consumer = getKafkaConsumer(props);
@@ -24,8 +25,8 @@ public class SampleConsumer2 extends BaseConsumer {
   }
 
   public static void main(String[] args) throws InterruptedException {
-    SampleConsumer2 consumer2 = new SampleConsumer2();
-    consumer2.startConsumer();
+    ConsumerOffsetsReset consumer = new ConsumerOffsetsReset();
+    consumer.consumeFromCommitReset();
   }
 
 }
