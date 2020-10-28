@@ -6,6 +6,11 @@ import com.series.workshop.kafka.consumer.base.CommitType;
 import java.util.Collections;
 import java.util.Properties;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+  /**
+   * TODO Make sure the below broker settings are set accordingly if the cluster has only one broker
+   * offsets.topic.replication.factor=1
+   * bin/kafka-configs.sh --zookeeper localhost:2181 --alter --entity-type topics --entity-name __consumer_offsets --add-config min.insync.replicas=1
+  **/
 
 public class SampleConsumer1 extends BaseConsumer {
 
