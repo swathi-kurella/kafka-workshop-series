@@ -34,7 +34,7 @@ public class PartitionOrderingProducer extends SampleProducer {
   }
 
   private static String getKey(int i) {
-    return String.valueOf(i%3);
+    return String.valueOf(i%3); //Generate 0,1,2 keys for all messages and observe the ordering with in the partition for messages with same key
   }
 
 }
