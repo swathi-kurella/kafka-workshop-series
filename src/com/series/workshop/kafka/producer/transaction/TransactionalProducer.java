@@ -36,7 +36,6 @@ public class TransactionalProducer extends IdempotentProducer {
     Properties props = getBasicProducerProperties();
 
     props.put("transactional.id", "tx1");
-    //props.put("max.block.ms", 120000);
 
     //Optional
     adjustDeliveryTimeout(props);
@@ -54,9 +53,8 @@ public class TransactionalProducer extends IdempotentProducer {
     transactionalProducer.producer.initTransactions();
     transactionalProducer.producer.beginTransaction();
     System.out.println("start");
-      for (int i = 0; i < 10; i++) {
-        //String message = scan.next();
-        transactionalProducer.readWriteCycle(transactionalProducer.producer, String.valueOf(i)); //typical streaming app
+      for (int i = 0; i < 5; i++) {
+        transactionalProducer.readWriteCycle(scan, transactionalProducer.producer); //typical streaming app
       }
     transactionalProducer.producer.commitTransaction();
   }

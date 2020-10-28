@@ -52,14 +52,24 @@ public class ProducerUtil {
     producer.send(producerRecord);
   }
 
-  void readWriteCycle(KafkaProducer<String, String> producer, String message) throws InterruptedException {
+  /**
+   * In a typical Streaming app (read-write cycle)
+   * i.e Consume from source topic -> process -> produce to destination topic
+   * You can commit the consumed offsets as part of the transaction by adding offsets to the txn request
+   *
+   * In this example we have used a simple scanner as consumer for simplicity.
+   */
+  void readWriteCycle(Scanner scan, KafkaProducer<String, String> producer) throws InterruptedException {
+
+    //Consume
+    String message = scan.next();
 
     //process
     sleep();
 
     ProducerRecord<String, String> producerRecord = new ProducerRecord<>(SAMPLE_TOPIC, message);
 
-    //Send data using Kafka Producer
+    //Produce
     producer.send(producerRecord);
   }
 
