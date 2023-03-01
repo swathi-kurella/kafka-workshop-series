@@ -5,6 +5,8 @@ plugins {
 group 'com.series.workshop.kafka'
 version '1.0-SNAPSHOT'
 
+sourceCompatibility = '11'
+
 repositories {
     mavenCentral()
 }
@@ -16,6 +18,6 @@ sourceSets {
     }
 }
 dependencies {
-    compile group: 'org.apache.kafka', name: 'kafka-clients', version: '2.5.0'
-    compile 'junit:junit:4.12'
+    implementation group: 'org.apache.kafka', name: 'kafka-clients', version: '2.5.0'
+    implementation 'junit:junit:4.12'
 }
